@@ -1,0 +1,34 @@
+﻿@model List<UnpaidBill>
+@{
+    ViewData["Title"] = "Прогноз";
+}
+
+<form action="/Home/MainResult" method="post">
+    <button type="submit">Спрогнозировать</button>
+</form>
+<table class="table table-border">
+    <tr>
+        @*<td>id</td>*@
+        <td>Филиал код</td>
+        <td>Код клиента</td>
+        <td>Номер документа</td>
+        <td>Вид счета</td>
+        <td>Дата документа</td>
+        <td>Условие платежа</td>
+        <td>Сумма</td>
+    </tr>
+    @foreach(var main in Model)
+    {
+        <tr>
+            @*<td>@main.Id</td>*@
+            <td>@main.kodBranch</td>
+            <td>@main.kodClient</td>
+            <td>@main.numberDoc</td>
+            <td>@main.View</td>
+            <td>@main.Date</td>
+            <td>@main.payCondition</td>
+            <td>@main.sum</td>
+        </tr>
+    }
+
+</table>

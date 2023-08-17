@@ -1,0 +1,36 @@
+﻿@model HomeViewModel
+@{
+    ViewData["Title"] = "Результат";
+}
+
+@if (Model != null)
+{
+    <table class="table table-border">
+        <tr>
+            <td>Филиал название</td>
+            <td>Условие платежа, дней</td>
+            <td>Кол-во дней до оплаты</td>
+            <td>Доля,%</td>
+        </tr>
+
+        @foreach (var result in Model.Invoices)
+        {
+            <tr>
+                <td>@result.Name</td>
+                <td>@result.payCondition</td>
+                <td>@result.DayPay</td>
+                <td>
+                    @if (result.SumScore < result.SumPayment)
+                    {
+                        @(result.Sum / result.SumPayment * 100) 
+                    }
+                    else if (result.SumScore >= result.SumPayment)
+                    {
+                        @(result.Sum / result.SumScore * 100)
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+}

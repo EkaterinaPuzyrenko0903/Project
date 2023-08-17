@@ -1,0 +1,52 @@
+﻿@model List<DataInvoicesPay>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form action="/Home/Result" method="post">
+    <button type="submit">Рассчитать коэффициент</button>
+</form>
+<table class="table table-border">
+    <tr>
+@*        <td>Номер строки</td>
+*@      <td>Филиал код</td>
+        <td>Филиал название</td>
+        <td>Код клиента</td>
+        <td>Номер док счета</td>
+        <td>Дата док счета</td>
+        <td>Вид док счета</td>
+        <td>Условие платежа, дней</td>
+        <td>Номер док платежа</td>
+        <td>Дата док платежа</td>
+        <td>Вид док платежа</td>
+        <td>Кол-во дней до оплаты</td>
+        <td>Сумма счета</td>
+        <td>Сумма платежа</td>
+        <td>Сумма платежа к счету</td>
+
+            
+    </tr>
+  
+
+    @foreach (var listpay in Model)
+    {
+        <tr>
+@*            <td>@listpay.Id</td>
+*@        <td>@listpay.Kod</td>
+           <td>@listpay.Name</td>
+            <td>@listpay.IdClient</td>
+           <td>@listpay.IdScore</td>
+             <td>@listpay.DateScore</td>
+            <td>@listpay.ViewScore</td>
+            <td>@listpay.payCondition</td>
+            <td>@listpay.IdPayment</td>
+           <td>@listpay.DatePayment</td>
+            <td>@listpay.ViewPayment</td>
+            <td>@listpay.DayPay</td>
+            <td>@listpay.SumScore</td>
+            <td>@listpay.SumPayment</td>
+        <td>@listpay.Sum</td>
+        </tr>
+    }
+</table>
+

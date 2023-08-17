@@ -1,0 +1,48 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Результат прогноза";
+}
+
+
+
+@if (Model != null)
+{
+    <table class="table table-border">
+    <tr>
+        <td>Филиал код</td>
+        <td>Код клиента</td>
+        <td>Номер документа</td>
+        <td>Дата документа</td>
+@*        <td>Условие платежа</td>
+*@@*        <td>Сумма</td>*@
+    </tr>
+   
+        @foreach(var sum in Model.Unpaids)
+        {
+            <tr>
+                <td>@sum.kodBranch</td>
+                <td>@sum.kodClient</td>
+                <td>@sum.numberDoc</td>
+                @foreach (var t in Model.Invoices)
+                {
+                    if (sum.payCondition == 30 && t.payCondition == 30 || sum.payCondition == 45 && t.payCondition == 45 || sum.payCondition == 0 && t.payCondition == 0)
+                    {
+                        <td>
+                            @(sum.Date.AddDays(t.DayPay))
+                        </td>
+                    }
+
+                }
+
+       
+            </tr>
+       
+        
+
+        }
+        
+ </table>
+     
+
+}
